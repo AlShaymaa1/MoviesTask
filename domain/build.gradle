@@ -1,0 +1,77 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "io.reactivex.rxjava2:rxjava:2.2.12"
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api "com.jakewharton.rxbinding2:rxbinding-kotlin:2.2.0"
+    api "com.google.code.gson:gson:2.8.5"
+    api 'com.google.dagger:dagger-android:2.23.2'
+    api "com.google.dagger:dagger-android-support:2.25.2"
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+// if you use injections to Android classes
+    kapt 'com.google.dagger:dagger-android-processor:2.23.2'
+    implementation 'com.google.dagger:dagger:2.24'
+    kapt 'com.google.dagger:dagger-compiler:2.24'
+    // retrofit
+    api 'com.google.code.gson:gson:2.8.5'
+    api 'com.squareup.retrofit2:retrofit:2.6.1'
+    api 'com.squareup.retrofit2:converter-gson:2.6.1'
+    api 'com.squareup.okhttp3:logging-interceptor:4.1.0'
+    api 'com.fasterxml.jackson.core:jackson-core:2.9.8'
+    api 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
+
+    api 'org.modelmapper:modelmapper:2.3.8'
+
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    api "android.arch.lifecycle:viewmodel:1.1.1"
+    api 'com.google.code.findbugs:jsr305:3.0.2'
+    api 'com.amitshekhar.android:jackson-android-networking:1.0.2'
+
+    //expandable recycler
+    api 'com.thoughtbot:expandablerecyclerview:1.3'
+
+    //picasso
+    api 'com.squareup.picasso:picasso:2.5.2'
+    api 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'
+    api 'androidx.preference:preference:1.1.1'
+    api 'com.github.noowenz:CustomDateTimePicker:1.01'
+
+    //
+    api 'com.airbnb.android:lottie:3.0.6'
+
+    //image picker
+    api 'com.github.dhaval2404:imagepicker-support:1.7.1'
+    api 'de.hdodenhof:circleimageview:3.1.0'
+    // Room components
+    def room_version = "2.2.5"
+
+    api "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    api "androidx.room:room-ktx:$room_version"
+    api "android.arch.persistence.room:runtime:1.1.1"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+    api "android.arch.persistence.room:rxjava2:1.1.1"
+    testImplementation "android.arch.persistence.room:testing:1.1.1"
+    api 'android.arch.lifecycle:extensions:1.1.1'
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xinline-classes"]
+        jvmTarget = "1.8"
+
+    }
+
+}
+
+}
